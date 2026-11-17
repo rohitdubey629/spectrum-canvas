@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Section component: heading + grid of items.
+ */
+#}
+{% set columns = columns ?? '3' %}
+{% set background = background ?? 'white' %}
+<section{{ attributes.addClass('sp-section', 'sp-bg--' ~ background) }}>
+  <div class="container">
+    {% if eyebrow or heading or intro %}
+      <div class="sp-section__header">
+        {% if eyebrow %}
+          <p class="sp-eyebrow">{{ eyebrow }}</p>
+        {% endif %}
+        {% if heading %}
+          <h2 class="sp-section__heading">{{ heading }}</h2>
+        {% endif %}
+        {% if intro %}
+          <p class="sp-section__intro">{{ intro|nl2br }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="sp-section__grid sp-section__grid--{{ columns }}">
+      {{ items }}
+    </div>
+
+    {% if button_text and button_url %}
+      <div class="sp-section__footer">
+        <a class="button button--outline" href="{{ button_url }}">{{ button_text }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>

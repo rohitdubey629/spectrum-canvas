@@ -1,0 +1,60 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Carousel
+status: stable
+group: 'Spectrum: Sections'
+description: A horizontal slider with a heading and previous/next buttons, such as the industries slider. Drop Cards (Industry style works best) into the Slides slot. Visitors can also swipe on touch screens.
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: Small label above the heading.
+      examples:
+        - Industries
+    heading:
+      type: string
+      title: Heading
+      description: Section heading (H2). Also used as the carousel's accessible name.
+      examples:
+        - Industries we serve
+    intro:
+      type: string
+      title: Intro text
+      description: Optional sentence under the heading.
+      examples:
+        - Placeholder text about the markets the company works in.
+    button_text:
+      type: string
+      title: Button text
+      description: Optional link next to the heading, such as "All industries".
+      examples:
+        - All industries
+    button_url:
+      type: string
+      format: uri-reference
+      title: Button link
+      examples:
+        - /industries
+    background:
+      type: string
+      title: Background
+      enum:
+        - white
+        - grey
+        - dark
+      meta:enum:
+        white: White
+        grey: Light grey
+        dark: Dark blue
+      default: grey
+      examples:
+        - grey
+slots:
+  slides:
+    title: Slides
+    description: One component per slide, usually Cards with the Industry style.
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once

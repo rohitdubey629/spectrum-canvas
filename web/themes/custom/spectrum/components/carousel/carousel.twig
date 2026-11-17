@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Carousel component.
+ *
+ * A CSS scroll-snap track: it can be swiped/scrolled without JS.
+ * carousel.js shows the previous/next buttons and keeps them in sync.
+ */
+#}
+{% set background = background ?? 'grey' %}
+{% set heading_id = 'sp-carousel-' ~ random() %}
+<section{{ attributes.addClass('sp-carousel', 'sp-bg--' ~ background) }}
+  {% if heading %}aria-labelledby="{{ heading_id }}"{% else %}aria-label="{{ 'Carousel'|t }}"{% endif %}
+  aria-roledescription="{{ 'carousel'|t }}">
+  <div class="container">
+    <div class="sp-carousel__header">
+      <div class="sp-carousel__titles">
+        {% if eyebrow %}
+          <p class="sp-eyebrow">{{ eyebrow }}</p>
+        {% endif %}
+        {% if heading %}
+          <h2 class="sp-carousel__heading" id="{{ heading_id }}">{{ heading }}</h2>
+        {% endif %}
+        {% if intro %}
+          <p class="sp-carousel__intro">{{ intro }}</p>
+        {% endif %}
+      </div>
+      <div class="sp-carousel__controls">
+        <button class="sp-carousel__button sp-carousel__button--prev" type="button" hidden>
+          <span class="visually-hidden">{{ 'Previous slide'|t }}</span>
+        </button>
+        <button class="sp-carousel__button sp-carousel__button--next" type="button" hidden>
+          <span class="visually-hidden">{{ 'Next slide'|t }}</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sp-carousel__track" tabindex="0">
+      {{ slides }}
+    </div>
+
+    {% if button_text and button_url %}
+      <div class="sp-carousel__footer">
+        <a class="sp-link-arrow" href="{{ button_url }}">{{ button_text }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>

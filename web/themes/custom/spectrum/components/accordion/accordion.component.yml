@@ -1,0 +1,36 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Accordion
+status: stable
+group: 'Spectrum: Sections'
+description: An FAQ or accordion section with an optional heading and intro. Drop Accordion item components into the Items slot, one per question.
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+      description: Section heading (H2). Leave empty to show only the items.
+      examples:
+        - Frequently asked questions
+    intro:
+      type: string
+      title: Intro text
+      description: Optional sentence under the heading.
+      examples:
+        - Placeholder text. Can't find your answer? Contact our support team.
+    background:
+      type: string
+      title: Background
+      enum:
+        - white
+        - grey
+      meta:enum:
+        white: White
+        grey: Light grey
+      default: white
+      examples:
+        - white
+slots:
+  items:
+    title: Items
+    description: Accordion item components, one per question.

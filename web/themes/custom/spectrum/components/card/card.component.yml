@@ -1,0 +1,73 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Card
+status: stable
+group: 'Spectrum: Items'
+description: A teaser for a product, news article, industry or any page, with image, title, short text and a link (the whole card is clickable). Pick a style per use. Put several in a Section or Carousel.
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      description: Card heading (H3).
+      maxLength: 100
+      examples:
+        - Rugged signal processing unit
+    text:
+      type: string
+      title: Text
+      description: One to three short sentences.
+      examples:
+        - Placeholder summary of the product or article in one or two sentences.
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+      description: Shown at the top of the card (or as the background in the Industry style). Landscape, about 3:2.
+      examples:
+        - src: https://placehold.co/600x400/1d4a7a/ffffff.png?text=Card
+          alt: Placeholder image
+          width: 600
+          height: 400
+    category:
+      type: string
+      title: Category
+      description: Small label above the title, such as the product family or news category.
+      examples:
+        - Signal processing
+    date:
+      type: string
+      format: date
+      title: Date
+      description: Publication date, shown on news cards.
+      examples:
+        - '2026-10-01'
+    link_text:
+      type: string
+      title: Link text
+      description: Text of the link at the bottom. The whole card links to the URL.
+      examples:
+        - Learn more
+    link_url:
+      type: string
+      format: uri-reference
+      title: Link URL
+      description: Leave empty for a card that does not link anywhere.
+      examples:
+        - /products
+    style:
+      type: string
+      title: Style
+      enum:
+        - default
+        - news
+        - industry
+      meta:enum:
+        default: Default (product / page)
+        news: News (shows date)
+        industry: Industry (title over image)
+      default: default
+      examples:
+        - default

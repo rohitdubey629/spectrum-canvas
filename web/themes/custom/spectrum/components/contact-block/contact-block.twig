@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Contact block component.
+ */
+#}
+<section{{ attributes.addClass('sp-contact') }}>
+  <div class="sp-contact__inner container">
+    <div class="sp-contact__info">
+      <h2 class="sp-contact__heading">{{ heading }}</h2>
+      {% if text %}
+        <p class="sp-contact__text">{{ text }}</p>
+      {% endif %}
+      <dl class="sp-contact__details">
+        {% if address %}
+          <div class="sp-contact__item">
+            <dt>{{ 'Address'|t }}</dt>
+            <dd><address>{{ address|nl2br }}</address></dd>
+          </div>
+        {% endif %}
+        {% if phone %}
+          <div class="sp-contact__item">
+            <dt>{{ 'Phone'|t }}</dt>
+            <dd><a href="tel:{{ phone|replace({' ': ''}) }}">{{ phone }}</a></dd>
+          </div>
+        {% endif %}
+        {% if email %}
+          <div class="sp-contact__item">
+            <dt>{{ 'Email'|t }}</dt>
+            <dd><a href="mailto:{{ email }}">{{ email }}</a></dd>
+          </div>
+        {% endif %}
+        {% if hours %}
+          <div class="sp-contact__item">
+            <dt>{{ 'Opening hours'|t }}</dt>
+            <dd>{{ hours|nl2br }}</dd>
+          </div>
+        {% endif %}
+      </dl>
+    </div>
+    <div class="sp-contact__form">
+      {{ form }}
+    </div>
+  </div>
+</section>

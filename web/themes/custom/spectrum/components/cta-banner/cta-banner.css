@@ -1,0 +1,91 @@
+.sp-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--space-8);
+  color: var(--color-text-inverse);
+}
+
+.sp-cta--dark {
+  --sp-cta-bg: var(--color-primary);
+  --sp-cta-overlay: rgb(11 42 74 / 0.88);
+}
+
+.sp-cta--accent {
+  --sp-cta-bg: var(--color-accent-dark);
+  --sp-cta-overlay: rgb(185 86 15 / 0.9);
+}
+
+.sp-cta {
+  background: var(--sp-cta-bg);
+}
+
+.sp-cta__image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sp-cta__image + .sp-cta__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--sp-cta-overlay);
+}
+
+.sp-cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.sp-cta__content {
+  max-width: 680px;
+}
+
+.sp-cta__heading {
+  margin-bottom: var(--space-2);
+  color: inherit;
+}
+
+.sp-cta__text {
+  margin-bottom: 0;
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+}
+
+.sp-cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* On the orange style the main button turns white. */
+.sp-cta--accent .sp-cta__button {
+  background: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
+  color: var(--color-accent-dark);
+}
+
+.sp-cta--accent .sp-cta__button:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.sp-cta__button-secondary {
+  border-color: var(--color-text-inverse);
+  color: var(--color-text-inverse);
+}
+
+.sp-cta__button-secondary:hover {
+  background: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
+  color: var(--color-primary);
+}

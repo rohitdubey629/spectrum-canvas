@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Card component.
+ *
+ * When a link URL is set, the title link is stretched over the whole card
+ * (one link per card, so screen readers don't hear duplicates).
+ */
+#}
+{% set style = style ?? 'default' %}
+<article{{ attributes.addClass('sp-card', 'sp-card--' ~ style, link_url ? 'sp-card--linked') }}>
+  {% if image and image.src %}
+    <div class="sp-card__media">
+      {% include 'canvas:image' with image|merge({
+        class: 'sp-card__image',
+        sizes: '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw',
+      }) only %}
+    </div>
+  {% endif %}
+  <div class="sp-card__body">
+    {% if category or (date and style == 'news') %}
+      <p class="sp-card__meta">
+        {% if category %}<span class="sp-card__category">{{ category }}</span>{% endif %}
+        {% if date and style == 'news' %}<time datetime="{{ date }}">{{ date|date('j F Y') }}</time>{% endif %}
+      </p>
+    {% endif %}
+    <h3 class="sp-card__title">
+      {% if link_url %}
+        <a class="sp-card__link" href="{{ link_url }}">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </h3>
+    {% if text and style != 'industry' %}
+      <p class="sp-card__text">{{ text }}</p>
+    {% endif %}
+    {% if link_url and link_text %}
+      <span class="sp-card__more sp-link-arrow" aria-hidden="true">{{ link_text }}</span>
+    {% endif %}
+  </div>
+</article>

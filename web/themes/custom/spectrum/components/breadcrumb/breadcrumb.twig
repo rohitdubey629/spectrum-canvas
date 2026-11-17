@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Breadcrumb component.
+ */
+#}
+{% if items %}
+  <nav{{ attributes.addClass('sp-breadcrumb') }} aria-label="{{ 'Breadcrumb'|t }}">
+    <ol class="sp-breadcrumb__list container">
+      {% for item in items %}
+        <li class="sp-breadcrumb__item">
+          {% if item.url %}
+            <a href="{{ item.url }}">{{ item.text }}</a>
+          {% else %}
+            <span aria-current="page">{{ item.text }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

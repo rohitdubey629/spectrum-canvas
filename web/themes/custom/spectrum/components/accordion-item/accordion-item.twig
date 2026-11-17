@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Accordion item component.
+ */
+#}
+<details{{ attributes.addClass('sp-accordion-item') }}{{ open ? ' open' }}>
+  <summary class="sp-accordion-item__question">{{ question }}</summary>
+  {% if answer %}
+    <div class="sp-accordion-item__answer">{{ answer }}</div>
+  {% endif %}
+</details>

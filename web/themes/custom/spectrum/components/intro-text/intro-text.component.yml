@@ -1,0 +1,66 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Intro text
+status: stable
+group: 'Spectrum: Sections'
+description: A short introduction block with an eyebrow, a heading, a paragraph of formatted text and an optional link. Use it right under the Hero or to open a part of the page.
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: Small label above the heading.
+      examples:
+        - Who we are
+    heading:
+      type: string
+      title: Heading
+      description: Rendered as an H2.
+      examples:
+        - Trusted engineering partner for more than 40 years
+    text:
+      type: string
+      title: Text
+      description: One or two paragraphs. Bold, italic, links and lists are allowed.
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>Placeholder introduction. We design, build and support electronic systems for customers in defence, industry and research.</p>'
+    link_text:
+      type: string
+      title: Link text
+      description: Optional text link under the paragraph.
+      examples:
+        - About us
+    link_url:
+      type: string
+      format: uri-reference
+      title: Link URL
+      examples:
+        - /about
+    alignment:
+      type: string
+      title: Alignment
+      enum:
+        - left
+        - center
+      meta:enum:
+        left: Left
+        center: Centre
+      default: center
+      examples:
+        - center
+    background:
+      type: string
+      title: Background
+      enum:
+        - white
+        - grey
+      meta:enum:
+        white: White
+        grey: Light grey
+      default: white
+      examples:
+        - white

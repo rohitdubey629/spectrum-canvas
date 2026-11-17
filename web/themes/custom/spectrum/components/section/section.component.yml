@@ -1,0 +1,73 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Section
+status: stable
+group: 'Spectrum: Sections'
+description: A page section with an optional heading and intro, a responsive grid of items and an optional "view all" button. Drop Stat cards, Cards or any other component into the Items slot to build stats rows, product grids, news grids and so on.
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: Small label above the heading.
+      examples:
+        - Our products
+    heading:
+      type: string
+      title: Heading
+      description: Section heading (H2). Leave empty for a grid without a heading.
+      examples:
+        - Products built for demanding environments
+    intro:
+      type: string
+      title: Intro text
+      description: Optional sentence under the heading.
+      examples:
+        - Placeholder text introducing the items below.
+    columns:
+      type: string
+      title: Columns on desktop
+      description: Items per row on large screens. Tablets show two per row and phones one.
+      enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      meta:enum:
+        '1': 1 column
+        '2': 2 columns
+        '3': 3 columns
+        '4': 4 columns
+      default: '3'
+      examples:
+        - '3'
+    background:
+      type: string
+      title: Background
+      enum:
+        - white
+        - grey
+        - dark
+      meta:enum:
+        white: White
+        grey: Light grey
+        dark: Dark blue
+      default: white
+      examples:
+        - white
+    button_text:
+      type: string
+      title: Button text
+      description: Optional button under the grid, such as "View all products".
+      examples:
+        - View all products
+    button_url:
+      type: string
+      format: uri-reference
+      title: Button link
+      examples:
+        - /products
+slots:
+  items:
+    title: Items
+    description: The grid items. One component per grid cell, usually Card or Stat card.

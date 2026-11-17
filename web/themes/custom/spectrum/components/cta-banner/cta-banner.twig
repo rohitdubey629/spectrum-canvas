@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * CTA banner component.
+ */
+#}
+{% set style = style ?? 'dark' %}
+<section{{ attributes.addClass('sp-cta', 'sp-cta--' ~ style) }}>
+  {% if image and image.src %}
+    {% include 'canvas:image' with image|merge({
+      class: 'sp-cta__image',
+      sizes: '100vw',
+    }) only %}
+  {% endif %}
+  <div class="sp-cta__inner container">
+    <div class="sp-cta__content">
+      <h2 class="sp-cta__heading">{{ heading }}</h2>
+      {% if text %}
+        <p class="sp-cta__text">{{ text }}</p>
+      {% endif %}
+    </div>
+    {% if (button_text and button_url) or (secondary_button_text and secondary_button_url) %}
+      <div class="sp-cta__buttons">
+        {% if button_text and button_url %}
+          <a class="button sp-cta__button" href="{{ button_url }}">{{ button_text }}</a>
+        {% endif %}
+        {% if secondary_button_text and secondary_button_url %}
+          <a class="button button--outline sp-cta__button-secondary" href="{{ secondary_button_url }}">{{ secondary_button_text }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>

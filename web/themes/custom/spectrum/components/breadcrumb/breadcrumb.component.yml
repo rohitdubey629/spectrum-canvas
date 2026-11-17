@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Breadcrumb
+status: stable
+group: 'Spectrum: Global'
+description: Breadcrumb trail for inner pages. Rendered by the core "Breadcrumbs" block through templates/navigation/breadcrumb.html.twig, so in Canvas place the Breadcrumbs block (not this component) in the page template.
+# Fed by Drupal's breadcrumb builder, not by editors: hidden from the Canvas
+# library on purpose (an array of links is not an editor-friendly prop).
+noUi: true
+props:
+  type: object
+  properties:
+    items:
+      type: array
+      title: Items
+      description: 'Links of the trail: each item has "text" and an optional "url". The last item (current page) has no url.'
+      items:
+        type: object

@@ -1,0 +1,114 @@
+.sp-carousel {
+  padding-block: var(--section-padding);
+  overflow: hidden;
+}
+
+.sp-carousel__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.sp-carousel__titles {
+  max-width: 680px;
+}
+
+.sp-carousel__heading {
+  margin-bottom: var(--space-2);
+}
+
+.sp-carousel__intro {
+  margin-bottom: 0;
+  opacity: 0.85;
+}
+
+.sp-carousel__controls {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.sp-carousel__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.sp-carousel__button[hidden] {
+  display: none;
+}
+
+.sp-carousel__button::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+}
+
+.sp-carousel__button--prev::before {
+  transform: translateX(2px) rotate(-135deg);
+}
+
+.sp-carousel__button--next::before {
+  transform: translateX(-2px) rotate(45deg);
+}
+
+.sp-carousel__button:hover:not(:disabled) {
+  background: var(--color-accent);
+}
+
+.sp-carousel__button:hover:not(:disabled)::before {
+  border-color: var(--color-text-inverse);
+}
+
+.sp-carousel__button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.sp-carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 85%;
+  gap: var(--space-5);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: var(--space-2);
+}
+
+.sp-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.sp-carousel__track > * {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .sp-carousel__track {
+    grid-auto-columns: calc((100% - var(--space-5)) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sp-carousel__track {
+    grid-auto-columns: calc((100% - 2 * var(--space-5)) / 3);
+  }
+}
+
+.sp-carousel__footer {
+  margin-top: var(--space-6);
+}

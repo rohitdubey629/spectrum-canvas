@@ -1,0 +1,17 @@
+name: Spectrum
+type: theme
+description: 'Spectrum clone theme with SDC components for Canvas (JSIN-435).'
+core_version_requirement: ^11
+# Standalone theme: every section of the UI is an SDC in components/.
+base theme: false
+package: Custom
+libraries:
+  - spectrum/global
+regions:
+  # The site-header SDC renders the <header> landmark itself, so the regions
+  # below are plain wrappers (see templates/layout/page.html.twig).
+  header: Header
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content: Content
+  footer: Footer

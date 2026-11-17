@@ -1,0 +1,32 @@
+.sp-breadcrumb {
+  background: var(--color-bg-alt);
+  font-size: var(--font-size-sm);
+}
+
+.sp-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-block: 0;
+  padding-block: var(--space-3);
+  list-style: none;
+}
+
+.sp-breadcrumb__item + .sp-breadcrumb__item::before {
+  content: "/";
+  margin-inline: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.sp-breadcrumb__item a {
+  color: var(--color-primary-light);
+  text-decoration: none;
+}
+
+.sp-breadcrumb__item a:hover {
+  text-decoration: underline;
+}
+
+.sp-breadcrumb__item [aria-current] {
+  color: var(--color-text-muted);
+}

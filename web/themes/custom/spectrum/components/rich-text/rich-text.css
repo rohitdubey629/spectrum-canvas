@@ -1,0 +1,28 @@
+.sp-rich-text {
+  padding-block: var(--space-7);
+}
+
+.sp-rich-text__inner > :last-child {
+  margin-bottom: 0;
+}
+
+.sp-rich-text h2,
+.sp-rich-text h3 {
+  margin-top: var(--space-6);
+}
+
+.sp-rich-text__inner > :first-child {
+  margin-top: 0;
+}
+
+.sp-rich-text img {
+  border-radius: var(--radius-md);
+}
+
+.sp-rich-text blockquote {
+  margin: var(--space-6) 0;
+  padding-left: var(--space-5);
+  border-left: 4px solid var(--color-accent);
+  font-size: var(--font-size-lg);
+  font-style: italic;
+}

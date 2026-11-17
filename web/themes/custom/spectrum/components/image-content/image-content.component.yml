@@ -1,0 +1,77 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Image and content
+status: stable
+group: 'Spectrum: Sections'
+description: Two-column block with an image on one side and a heading, formatted text and a button on the other. Choose whether the image is on the left or right; alternate them down a page for a zig-zag layout. Stacks on mobile.
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: Small label above the heading.
+      examples:
+        - Contract services
+    heading:
+      type: string
+      title: Heading
+      description: Rendered as an H2.
+      examples:
+        - From prototype to full-rate production
+    text:
+      type: string
+      title: Text
+      description: Paragraphs and bullet lists are allowed.
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>Placeholder text about this service. Keep it to two short paragraphs or a bullet list.</p><ul><li>Design and prototyping</li><li>Testing and qualification</li><li>Manufacturing and support</li></ul>'
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+      description: Landscape image, about 4:3.
+      examples:
+        - src: https://placehold.co/800x600/d9dee5/0b2a4a.png?text=Image
+          alt: Placeholder image
+          width: 800
+          height: 600
+    image_position:
+      type: string
+      title: Image position
+      description: Side of the image on tablet and desktop. On mobile the image is always on top.
+      enum:
+        - left
+        - right
+      meta:enum:
+        left: Image left
+        right: Image right
+      default: left
+      examples:
+        - left
+    button_text:
+      type: string
+      title: Button text
+      description: Leave empty to hide the button.
+      examples:
+        - Learn more
+    button_url:
+      type: string
+      format: uri-reference
+      title: Button link
+      examples:
+        - /contract-services
+    background:
+      type: string
+      title: Background
+      enum:
+        - white
+        - grey
+      meta:enum:
+        white: White
+        grey: Light grey
+      default: white
+      examples:
+        - white

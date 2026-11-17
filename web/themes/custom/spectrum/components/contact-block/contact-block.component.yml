@@ -1,0 +1,51 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Contact block
+status: stable
+group: 'Spectrum: Sections'
+description: Two-column contact section with a heading, intro and contact details (address, phone, email, opening hours) on one side and a form on the other. Drop a form block into the Form slot.
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    heading:
+      type: string
+      title: Heading
+      description: Rendered as an H2.
+      examples:
+        - Get in touch
+    text:
+      type: string
+      title: Intro text
+      description: One or two sentences above the contact details.
+      examples:
+        - Placeholder text. Send us a message and the right person will reply within two working days.
+    address:
+      type: string
+      title: Address
+      description: Postal address on one line, parts separated by commas.
+      examples:
+        - 100 Example Road, Sample City, AB1 2CD
+    phone:
+      type: string
+      title: Phone
+      description: Shown as a tap-to-call link.
+      examples:
+        - +44 1234 567890
+    email:
+      type: string
+      format: email
+      title: Email
+      description: Shown as a mailto link.
+      examples:
+        - hello@example.com
+    hours:
+      type: string
+      title: Opening hours
+      description: Short text, such as the days and times.
+      examples:
+        - "Monday to Friday: 9:00 – 17:00"
+slots:
+  form:
+    title: Form
+    description: The contact form block.

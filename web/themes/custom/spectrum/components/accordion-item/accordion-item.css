@@ -1,0 +1,52 @@
+.sp-accordion-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sp-accordion-item__question {
+  position: relative;
+  display: block;
+  padding: var(--space-5) var(--space-7) var(--space-5) 0;
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  list-style: none;
+}
+
+.sp-accordion-item__question::-webkit-details-marker {
+  display: none;
+}
+
+/* Plus / minus icon */
+.sp-accordion-item__question::before,
+.sp-accordion-item__question::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: var(--space-2);
+  width: 16px;
+  height: 2px;
+  background: var(--color-accent);
+  transition: transform var(--transition);
+}
+
+.sp-accordion-item__question::after {
+  transform: rotate(90deg);
+}
+
+.sp-accordion-item[open] > .sp-accordion-item__question::after {
+  transform: rotate(0deg);
+}
+
+.sp-accordion-item__question:hover {
+  color: var(--color-accent-dark);
+}
+
+.sp-accordion-item__answer {
+  padding-bottom: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+.sp-accordion-item__answer > :last-child {
+  margin-bottom: 0;
+}

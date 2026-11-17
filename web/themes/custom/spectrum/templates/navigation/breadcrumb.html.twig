@@ -1,0 +1,10 @@
+{#
+/**
+ * @file
+ * Renders core's breadcrumb through the Spectrum breadcrumb SDC.
+ *
+ * spectrum_preprocess_breadcrumb() appends the current page title as the
+ * last item (without a URL).
+ */
+#}
+{{ include('spectrum:breadcrumb', { items: breadcrumb }, with_context = false) }}

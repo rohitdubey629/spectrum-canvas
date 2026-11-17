@@ -1,0 +1,29 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Rich text
+status: stable
+group: 'Spectrum: Sections'
+description: A readable column of formatted text (headings, paragraphs, lists, links). Use it for longer copy and for the body of news articles; in a content template, link it to the Body field.
+props:
+  type: object
+  properties:
+    content:
+      type: string
+      title: Content
+      description: Formatted text.
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<h2>Placeholder heading</h2><p>Placeholder paragraph. Write longer copy here, with <strong>bold</strong> text, <a href="/about">links</a> and lists.</p>'
+    width:
+      type: string
+      title: Width
+      description: Narrow keeps lines short and easy to read.
+      enum:
+        - narrow
+        - wide
+      meta:enum:
+        narrow: Narrow (best for reading)
+        wide: Wide
+      default: narrow
+      examples:
+        - narrow

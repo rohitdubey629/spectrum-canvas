@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Site header component.
+ *
+ * The "navigation" slot holds core's Main navigation menu block
+ * (nav > h2.visually-hidden + ul > li > a [+ ul]). site-header.js adds a
+ * submenu toggle button to every item that has children, and drives the
+ * mobile menu toggle. Without JS the menu is always visible.
+ *
+ * Root element is a <div>: core's page.html.twig already wraps the header
+ * region in <header>, and css/layout.css makes that wrapper sticky.
+ */
+#}
+{% set sticky = sticky ?? true %}
+{% set nav_id = 'sp-header-menu-' ~ random() %}
+<div{{ attributes.addClass('sp-header', sticky ? 'sp-header--sticky') }}>
+  <div class="sp-header__inner container">
+    <a class="sp-header__brand" href="{{ path('<front>') }}" rel="home">
+      {% if logo and logo.src %}
+        {% include 'canvas:image' with logo|merge({
+          alt: site_name,
+          class: 'sp-header__logo',
+          loading: 'eager',
+          sizes: '240px',
+        }) only %}
+      {% else %}
+        <span class="sp-header__name">{{ site_name }}</span>
+      {% endif %}
+    </a>
+
+    <button class="sp-header__toggle" type="button" aria-expanded="false" aria-controls="{{ nav_id }}">
+      <span class="sp-header__toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">{{ 'Menu'|t }}</span>
+    </button>
+
+    <div class="sp-header__menu" id="{{ nav_id }}">
+      <div class="sp-header__nav">
+        {{ navigation }}
+      </div>
+      {% if utility|render|striptags|trim or button_text %}
+        <div class="sp-header__actions">
+          {% if utility|render|striptags|trim %}
+            <div class="sp-header__utility">{{ utility }}</div>
+          {% endif %}
+          {% if button_text and button_url %}
+            <a class="button sp-header__button" href="{{ button_url }}">{{ button_text }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

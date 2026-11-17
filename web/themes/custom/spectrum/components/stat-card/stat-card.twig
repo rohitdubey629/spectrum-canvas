@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Stat card component.
+ */
+#}
+<div{{ attributes.addClass('sp-stat') }}>
+  <p class="sp-stat__value">{{ value }}</p>
+  <p class="sp-stat__label">{{ label }}</p>
+  {% if text %}
+    <p class="sp-stat__text">{{ text }}</p>
+  {% endif %}
+</div>

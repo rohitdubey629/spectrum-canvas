@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Accordion component (wrapper for Accordion items).
+ */
+#}
+{% set background = background ?? 'white' %}
+<section{{ attributes.addClass('sp-accordion', 'sp-bg--' ~ background) }}>
+  <div class="container container--narrow">
+    {% if heading or intro %}
+      <div class="sp-accordion__header">
+        {% if heading %}
+          <h2 class="sp-accordion__heading">{{ heading }}</h2>
+        {% endif %}
+        {% if intro %}
+          <p class="sp-accordion__intro">{{ intro }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="sp-accordion__items">
+      {{ items }}
+    </div>
+  </div>
+</section>

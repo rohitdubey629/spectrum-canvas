@@ -1,0 +1,31 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Accordion item
+status: stable
+group: 'Spectrum: Items'
+description: One question and answer that opens and closes. Place it inside an Accordion. Uses the native details element, so it works by keyboard and without JavaScript.
+props:
+  type: object
+  required:
+    - question
+  properties:
+    question:
+      type: string
+      title: Question
+      description: The clickable title.
+      examples:
+        - How do I request a quote?
+    answer:
+      type: string
+      title: Answer
+      description: Shown when the item is open. Paragraphs, links and lists are allowed.
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>Placeholder answer. Use the contact form and our team will reply within two working days.</p>'
+    open:
+      type: boolean
+      title: Open by default
+      description: Show the answer when the page loads.
+      default: false
+      examples:
+        - false

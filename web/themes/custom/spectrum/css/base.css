@@ -1,0 +1,262 @@
+/**
+ * @file
+ * Design tokens and base element styles for the Spectrum theme.
+ *
+ * Components read these custom properties; they never hard-code colours,
+ * fonts or spacing. Colours are placeholders inspired by the reference
+ * layout (dark navy + one accent), not the brand's exact palette.
+ *
+ * Breakpoints (CSS variables can't be used in media queries, so they are
+ * documented here; responsive images use core's viewport_sizing group):
+ *   tablet  >= 768px
+ *   desktop >= 1024px
+ *   wide    >= 1280px
+ */
+
+:root {
+  /* Colours */
+  --color-primary: #0b2a4a;        /* navy: header, footer, dark sections */
+  --color-primary-dark: #071c33;
+  --color-primary-light: #1d4a7a;
+  --color-accent: #e5701e;         /* orange: buttons, highlights */
+  --color-accent-dark: #b9560f;
+  --color-text: #1f2933;
+  --color-text-muted: #5b6875;
+  --color-text-inverse: #ffffff;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f3f5f8;         /* light grey section background */
+  --color-border: #d9dee5;
+  --color-focus: #2f80ed;
+
+  /* Typography: system stack, no web font request. */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 1rem;          /* 16px */
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-h1: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --font-size-h2: clamp(1.625rem, 1.25rem + 1.6vw, 2.5rem);
+  --font-size-h3: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --font-size-h4: 1.125rem;
+  --line-height-base: 1.6;
+  --line-height-heading: 1.2;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-padding: clamp(var(--space-7), 6vw, var(--space-9));
+
+  /* Layout */
+  --container-max: 1240px;
+  --container-narrow: 820px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --header-height: 72px;
+
+  /* Shape and depth */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgb(11 42 74 / 0.08);
+  --shadow-md: 0 6px 20px rgb(11 42 74 / 0.12);
+
+  /* Motion */
+  --transition: 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition: 0ms;
+  }
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 var(--space-4);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  color: var(--color-primary);
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--color-primary-light);
+  text-underline-offset: 0.15em;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Utilities shared by components */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--narrow {
+  max-width: calc(var(--container-narrow) + 2 * var(--gutter));
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.button:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  color: var(--color-text-inverse);
+}
+
+.button--outline {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.button--outline:hover {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+/* Shared section helpers used by several components. */
+.sp-bg--white {
+  background: var(--color-bg);
+}
+
+.sp-bg--grey {
+  background: var(--color-bg-alt);
+}
+
+.sp-bg--dark {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.sp-bg--dark h2,
+.sp-bg--dark h3 {
+  color: var(--color-text-inverse);
+}
+
+.sp-eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--color-accent-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sp-bg--dark .sp-eyebrow {
+  color: var(--color-accent);
+}
+
+/* Text link with an arrow, e.g. "Learn more →". */
+.sp-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-accent-dark);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.sp-link-arrow::after {
+  content: "→";
+  transition: transform var(--transition);
+}
+
+a.sp-link-arrow:hover::after,
+.sp-card--linked:hover .sp-link-arrow::after {
+  transform: translateX(4px);
+}
+
+.sp-bg--dark .sp-link-arrow {
+  color: var(--color-accent);
+}

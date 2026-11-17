@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Intro text component.
+ */
+#}
+{% set alignment = alignment ?? 'center' %}
+{% set background = background ?? 'white' %}
+<section{{ attributes.addClass('sp-intro', 'sp-intro--' ~ alignment, 'sp-bg--' ~ background) }}>
+  <div class="sp-intro__inner container container--narrow">
+    {% if eyebrow %}
+      <p class="sp-eyebrow">{{ eyebrow }}</p>
+    {% endif %}
+    <h2 class="sp-intro__heading">{{ heading }}</h2>
+    {% if text %}
+      <div class="sp-intro__text">{{ text }}</div>
+    {% endif %}
+    {% if link_text and link_url %}
+      <a class="sp-link-arrow" href="{{ link_url }}">{{ link_text }}</a>
+    {% endif %}
+  </div>
+</section>

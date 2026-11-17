@@ -1,0 +1,67 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: CTA banner
+status: stable
+group: 'Spectrum: Sections'
+description: A full-width call-to-action band with a heading, short text and up to two buttons. Use it near the bottom of a page to send visitors to Contact or another key page.
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    heading:
+      type: string
+      title: Heading
+      description: Rendered as an H2.
+      examples:
+        - Have a project in mind?
+    text:
+      type: string
+      title: Text
+      description: One short sentence.
+      examples:
+        - Placeholder text inviting visitors to get in touch with the team.
+    button_text:
+      type: string
+      title: Button text
+      examples:
+        - Contact us
+    button_url:
+      type: string
+      format: uri-reference
+      title: Button link
+      examples:
+        - /contact
+    secondary_button_text:
+      type: string
+      title: Second button text
+      description: Optional outline button.
+      examples:
+        - Our services
+    secondary_button_url:
+      type: string
+      format: uri-reference
+      title: Second button link
+      examples:
+        - /contract-services
+    style:
+      type: string
+      title: Colour
+      enum:
+        - dark
+        - accent
+      meta:enum:
+        dark: Dark blue
+        accent: Orange
+      default: dark
+      examples:
+        - dark
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Background image
+      description: Optional image behind the banner, shown with a coloured overlay.
+      examples:
+        - src: https://placehold.co/1920x500/071c33/1d4a7a.png?text=CTA
+          alt: ''
+          width: 1920
+          height: 500

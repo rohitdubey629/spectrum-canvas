@@ -1,0 +1,117 @@
+.sp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.sp-card--linked:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.sp-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.sp-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--space-5);
+}
+
+.sp-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.sp-card__category {
+  color: var(--color-accent-dark);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sp-card__title {
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-h4);
+}
+
+.sp-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Stretch the single link over the whole card. */
+.sp-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.sp-card__link:focus-visible {
+  outline: none;
+}
+
+.sp-card:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.sp-card__text {
+  color: var(--color-text-muted);
+}
+
+.sp-card__more {
+  margin-top: auto;
+}
+
+/* Industry: title on top of the image. */
+.sp-card--industry {
+  border: 0;
+  min-height: 320px;
+  color: var(--color-text-inverse);
+  background: var(--color-primary);
+}
+
+.sp-card--industry .sp-card__media {
+  position: absolute;
+  inset: 0;
+}
+
+.sp-card--industry .sp-card__image {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.sp-card--industry .sp-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(7 28 51 / 0) 30%, rgb(7 28 51 / 0.9) 100%);
+}
+
+.sp-card--industry .sp-card__body {
+  position: relative;
+  justify-content: flex-end;
+}
+
+.sp-card--industry .sp-card__title,
+.sp-card--industry .sp-card__more {
+  color: var(--color-text-inverse);
+  margin-top: 0;
+}

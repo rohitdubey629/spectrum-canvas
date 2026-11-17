@@ -1,0 +1,30 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Stat card
+status: stable
+group: 'Spectrum: Items'
+description: One key figure with a label, such as "40+ years of experience". Put several in a Section (4 columns) to make a stats row.
+props:
+  type: object
+  required:
+    - value
+    - label
+  properties:
+    value:
+      type: string
+      title: Value
+      description: The figure, including any symbol, such as "40+", "98%" or "1,200".
+      maxLength: 12
+      examples:
+        - 40+
+    label:
+      type: string
+      title: Label
+      description: What the figure means, in a few words.
+      examples:
+        - Years of experience
+    text:
+      type: string
+      title: Extra text
+      description: Optional short sentence under the label.
+      examples:
+        - Placeholder sentence adding context to the figure.

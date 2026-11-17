@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Rich text component.
+ */
+#}
+{% set width = width ?? 'narrow' %}
+<div{{ attributes.addClass('sp-rich-text') }}>
+  <div class="sp-rich-text__inner container{{ width == 'narrow' ? ' container--narrow' }}">
+    {{ content }}
+  </div>
+</div>

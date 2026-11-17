@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Image and content component.
+ */
+#}
+{% set image_position = image_position ?? 'left' %}
+{% set background = background ?? 'white' %}
+<section{{ attributes.addClass('sp-image-content', 'sp-image-content--image-' ~ image_position, 'sp-bg--' ~ background) }}>
+  <div class="sp-image-content__inner container">
+    {% if image and image.src %}
+      <div class="sp-image-content__media">
+        {% include 'canvas:image' with image|merge({
+          class: 'sp-image-content__image',
+          sizes: '(min-width: 768px) 50vw, 100vw',
+        }) only %}
+      </div>
+    {% endif %}
+    <div class="sp-image-content__body">
+      {% if eyebrow %}
+        <p class="sp-eyebrow">{{ eyebrow }}</p>
+      {% endif %}
+      <h2 class="sp-image-content__heading">{{ heading }}</h2>
+      {% if text %}
+        <div class="sp-image-content__text">{{ text }}</div>
+      {% endif %}
+      {% if button_text and button_url %}
+        <a class="button" href="{{ button_url }}">{{ button_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>

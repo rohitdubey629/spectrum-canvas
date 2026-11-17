@@ -1,0 +1,8 @@
+# Global CSS only: design tokens, base elements and page layout.
+# Component CSS/JS is loaded per component by SDC, not from here.
+global:
+  css:
+    base:
+      css/base.css: {}
+    layout:
+      css/layout.css: {}

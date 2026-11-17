@@ -1,0 +1,65 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Site footer
+status: stable
+group: 'Spectrum: Global'
+description: Global footer with logo and short text, footer menu columns, contact details and a copyright line with the current year. Place it once at the bottom of the Canvas page template.
+props:
+  type: object
+  required:
+    - site_name
+  properties:
+    site_name:
+      type: string
+      title: Site name
+      description: Shown when no logo is set, and used in the copyright line.
+      maxLength: 60
+      examples:
+        - Spectrum Clone
+    logo:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Logo
+      description: Optional light logo for the dark background.
+      examples:
+        - src: https://placehold.co/240x60/071c33/ffffff.png?text=SPECTRUM
+          alt: Spectrum Clone
+          width: 240
+          height: 60
+    text:
+      type: string
+      title: About text
+      description: One or two sentences under the logo.
+      examples:
+        - Placeholder company that designs and builds electronic systems for demanding industries.
+    address:
+      type: string
+      title: Address
+      description: Postal address on one line, parts separated by commas.
+      examples:
+        - 100 Example Road, Sample City, AB1 2CD
+    phone:
+      type: string
+      title: Phone
+      description: Phone number shown as a tap-to-call link.
+      examples:
+        - +44 1234 567890
+    email:
+      type: string
+      format: email
+      title: Email
+      description: Email address shown as a mailto link.
+      examples:
+        - hello@example.com
+    copyright:
+      type: string
+      title: Copyright text
+      description: Shown after "© <current year>". For example the company name and "All rights reserved."
+      examples:
+        - Spectrum Clone. All rights reserved.
+slots:
+  navigation:
+    title: Footer menu
+    description: Drop the "Footer" menu block here. Top-level links become column headings and their children are listed under them.
+  legal:
+    title: Legal links
+    description: Optional small links in the bottom bar, such as Privacy policy or Cookies.

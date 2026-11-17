@@ -1,0 +1,57 @@
+{#
+/**
+ * @file
+ * Site footer component.
+ *
+ * Root element is a <div>: core's page.html.twig already wraps the footer
+ * region in <footer>.
+ */
+#}
+<div{{ attributes.addClass('sp-footer') }}>
+  <div class="sp-footer__main container">
+    <div class="sp-footer__brand">
+      <a class="sp-footer__home" href="{{ path('<front>') }}" rel="home">
+        {% if logo and logo.src %}
+          {% include 'canvas:image' with logo|merge({
+            alt: site_name,
+            class: 'sp-footer__logo',
+            sizes: '240px',
+          }) only %}
+        {% else %}
+          <span class="sp-footer__name">{{ site_name }}</span>
+        {% endif %}
+      </a>
+      {% if text %}
+        <p class="sp-footer__text">{{ text|nl2br }}</p>
+      {% endif %}
+    </div>
+
+    <div class="sp-footer__nav">
+      {{ navigation }}
+    </div>
+
+    {% if address or phone or email %}
+      <div class="sp-footer__contact">
+        <h2 class="sp-footer__heading">{{ 'Contact'|t }}</h2>
+        {% if address %}
+          <address class="sp-footer__address">{{ address|nl2br }}</address>
+        {% endif %}
+        {% if phone %}
+          <p><a href="tel:{{ phone|replace({' ': ''}) }}">{{ phone }}</a></p>
+        {% endif %}
+        {% if email %}
+          <p><a href="mailto:{{ email }}">{{ email }}</a></p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="sp-footer__bottom">
+    <div class="sp-footer__bottom-inner container">
+      <p class="sp-footer__copyright">© {{ 'now'|date('Y') }} {{ copyright ?: site_name }}</p>
+      {% if legal|render|striptags|trim %}
+        <div class="sp-footer__legal">{{ legal }}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>

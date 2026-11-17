@@ -1,0 +1,87 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Hero
+status: stable
+group: 'Spectrum: Sections'
+description: Banner at the top of a page with a background image, the page heading (H1), short text and up to two buttons. Use "Large" on the homepage and "Compact" on inner pages.
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    heading:
+      type: string
+      title: Heading
+      description: Page heading, rendered as the H1. Use one Hero per page.
+      maxLength: 120
+      examples:
+        - Engineering electronics for the world's toughest environments
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: Small label above the heading, such as the section name.
+      examples:
+        - Defence and aerospace
+    text:
+      type: string
+      title: Text
+      description: One or two sentences under the heading.
+      examples:
+        - Placeholder text describing what the company does, in one short sentence.
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Background image
+      description: Wide image behind the text (at least 1920px wide). A dark overlay keeps the text readable. It loads first, so it is not lazy-loaded.
+      examples:
+        - src: https://placehold.co/1920x800/0b2a4a/1d4a7a.png?text=Hero+image
+          alt: ''
+          width: 1920
+          height: 800
+    button_text:
+      type: string
+      title: Button text
+      description: Main button. Leave empty to hide it.
+      examples:
+        - Our products
+    button_url:
+      type: string
+      format: uri-reference
+      title: Button link
+      examples:
+        - /products
+    secondary_button_text:
+      type: string
+      title: Second button text
+      description: Outline button next to the main one. Leave empty to hide it.
+      examples:
+        - Contact us
+    secondary_button_url:
+      type: string
+      format: uri-reference
+      title: Second button link
+      examples:
+        - /contact
+    size:
+      type: string
+      title: Size
+      enum:
+        - large
+        - compact
+      meta:enum:
+        large: Large (homepage)
+        compact: Compact (inner pages)
+      default: large
+      examples:
+        - large
+    alignment:
+      type: string
+      title: Text alignment
+      enum:
+        - left
+        - center
+      meta:enum:
+        left: Left
+        center: Centre
+      default: left
+      examples:
+        - left

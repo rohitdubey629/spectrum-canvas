@@ -1,0 +1,86 @@
+.sp-contact {
+  padding-block: var(--section-padding);
+}
+
+.sp-contact__inner {
+  display: grid;
+  gap: var(--space-7);
+}
+
+@media (min-width: 1024px) {
+  .sp-contact__inner {
+    grid-template-columns: 2fr 3fr;
+    gap: var(--space-8);
+  }
+}
+
+.sp-contact__text {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
+
+.sp-contact__details {
+  margin: var(--space-6) 0 0;
+}
+
+.sp-contact__item {
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.sp-contact__item dt {
+  margin-bottom: var(--space-1);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.sp-contact__item dd {
+  margin: 0;
+}
+
+.sp-contact__item address {
+  font-style: normal;
+}
+
+.sp-contact__form {
+  padding: var(--space-6);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+}
+
+/* Core form elements inside the slot. */
+.sp-contact__form .form-item {
+  margin-bottom: var(--space-4);
+}
+
+.sp-contact__form label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sp-contact__form input[type="text"],
+.sp-contact__form input[type="email"],
+.sp-contact__form input[type="tel"],
+.sp-contact__form select,
+.sp-contact__form textarea {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+}
+
+.sp-contact__form input[type="submit"] {
+  padding: var(--space-3) var(--space-6);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.sp-contact__form input[type="submit"]:hover {
+  background: var(--color-accent-dark);
+}

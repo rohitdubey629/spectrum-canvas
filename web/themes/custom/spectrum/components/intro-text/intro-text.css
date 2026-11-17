@@ -1,0 +1,21 @@
+.sp-intro {
+  padding-block: var(--section-padding);
+}
+
+.sp-intro--center {
+  text-align: center;
+}
+
+.sp-intro__text {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
+
+.sp-intro__text > :last-child {
+  margin-bottom: 0;
+}
+
+.sp-intro .sp-link-arrow {
+  display: inline-block;
+  margin-top: var(--space-5);
+}
