@@ -2,12 +2,9 @@
 /**
  * @file
  * Site footer component.
- *
- * Root element is a <div>: core's page.html.twig already wraps the footer
- * region in <footer>.
  */
 #}
-<div{{ attributes.addClass('sp-footer') }}>
+<footer{{ attributes.addClass('sp-footer') }}>
   <div class="sp-footer__main container">
     <div class="sp-footer__brand">
       <a class="sp-footer__home" href="{{ path('<front>') }}" rel="home">
@@ -54,4 +51,4 @@
       {% endif %}
     </div>
   </div>
-</div>
+</footer>

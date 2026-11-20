@@ -6,6 +6,12 @@
   box-shadow: var(--shadow-sm);
 }
 
+.sp-header--sticky {
+  position: sticky;
+  /* Stays under Drupal's admin toolbar when it is shown. */
+  top: var(--drupal-displace-offset-top, 0px);
+}
+
 .sp-header__inner {
   display: flex;
   flex-wrap: wrap;
@@ -136,7 +142,7 @@
 }
 
 /* Mobile and tablet: collapsible panel, submenus open inline. */
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .js-sp-header .sp-header__toggle {
     display: block;
   }
@@ -190,17 +196,39 @@
 }
 
 /* Desktop: horizontal menu, dropdowns on hover, focus or button. */
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
+  /* Logo, menu and button stay on one row. */
+  .sp-header__inner {
+    flex-wrap: nowrap;
+  }
+
+  .sp-header__brand,
+  .sp-header__actions {
+    flex-shrink: 0;
+  }
+
   .sp-header__menu {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-5);
+    min-width: 0;
   }
 
   .sp-header__nav :not(li) > ul {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-1);
+  }
+
+  .sp-header__nav :not(li) > ul > li > a,
+  .sp-header__nav :not(li) > ul > li > span,
+  .sp-header__button {
+    white-space: nowrap;
+  }
+
+  .sp-header__nav .sp-header__sub-toggle {
+    width: 24px;
+    margin-left: calc(-1 * var(--space-1));
   }
 
   .sp-header__nav :not(li) > ul > li {

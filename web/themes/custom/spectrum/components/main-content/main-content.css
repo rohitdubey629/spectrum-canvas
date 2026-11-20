@@ -1,0 +1,16 @@
+.sp-main {
+  display: block;
+  flex: 1 0 auto;
+}
+
+.sp-main:focus {
+  outline: none;
+}
+
+/* Status messages sit at the top of main, in the site container. */
+.sp-main [data-drupal-messages] {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin: var(--space-4) auto 0;
+  padding-inline: var(--gutter);
+}

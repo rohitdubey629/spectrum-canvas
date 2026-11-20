@@ -28,3 +28,66 @@ function spectrum_preprocess_breadcrumb(array &$variables): void {
   // The title differs per page, so the breadcrumb must be cached per URL.
   $variables['#cache']['contexts'][] = 'url.path';
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for node templates.
+ *
+ * News teasers (used by the News view) are rendered with the "card" SDC, so
+ * the listing and the hand-built cards on Canvas pages look the same. This
+ * maps the node's fields to the card props.
+ */
+function spectrum_preprocess_node(array &$variables): void {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  if ($node->bundle() !== 'news' || $variables['view_mode'] !== 'teaser') {
+    return;
+  }
+  $cache = \Drupal\Core\Cache\CacheableMetadata::createFromRenderArray($variables['elements']);
+
+  $image = NULL;
+  $item = $node->get('field_image')->first();
+  if ($item && $item->entity) {
+    $image = [
+      'src' => $item->entity->getFileUri(),
+      'alt' => $item->alt,
+      'width' => $item->width,
+      'height' => $item->height,
+    ];
+    $cache->addCacheableDependency($item->entity);
+  }
+
+  $category = NULL;
+  $term = $node->get('field_news_category')->entity;
+  if ($term) {
+    $category = $term->label();
+    $cache->addCacheableDependency($term);
+  }
+
+  $body = $node->get('body')->first();
+  $text = '';
+  if ($body) {
+    $text = trim(strip_tags((string) ($body->summary ?: $body->value)));
+    $text = \Drupal\Component\Utility\Unicode::truncate($text, 180, TRUE, TRUE);
+  }
+
+  $variables['card'] = [
+    'title' => $node->label(),
+    'text' => $text,
+    'image' => $image,
+    'category' => $category,
+    'date' => date('Y-m-d', (int) $node->getCreatedTime()),
+    'link_text' => t('Read more'),
+    'link_url' => $node->toUrl()->toString(),
+    'style' => 'news',
+  ];
+  $cache->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for pager templates.
+ *
+ * Attach pager styles only on pages that actually show a pager.
+ */
+function spectrum_preprocess_pager(array &$variables): void {
+  $variables['#attached']['library'][] = 'spectrum/pager';
+}

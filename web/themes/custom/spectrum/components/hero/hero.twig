@@ -21,6 +21,9 @@
         <p class="sp-hero__eyebrow">{{ eyebrow }}</p>
       {% endif %}
       <h1 class="sp-hero__heading">{{ heading }}</h1>
+      {% if date %}
+        <p class="sp-hero__date"><time datetime="{{ date }}">{{ date|date('j F Y') }}</time></p>
+      {% endif %}
       {% if text %}
         <p class="sp-hero__text">{{ text|nl2br }}</p>
       {% endif %}

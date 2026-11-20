@@ -84,3 +84,97 @@
 .sp-contact__form input[type="submit"]:hover {
   background: var(--color-accent-dark);
 }
+
+.sp-contact__form textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.sp-contact__form input:focus-visible,
+.sp-contact__form select:focus-visible,
+.sp-contact__form textarea:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+  border-color: var(--color-focus);
+}
+
+/* Required marker added by Drupal to required field labels. */
+.sp-contact__form .form-required::after {
+  content: " *";
+  color: var(--color-accent-dark);
+}
+
+/* Validation errors (Webform inline errors and core error class). */
+.sp-contact__form .error,
+.sp-contact__form [aria-invalid="true"] {
+  border-color: #c0392b;
+}
+
+.sp-contact__form .form-item--error-message {
+  margin-top: var(--space-1);
+  color: #c0392b;
+  font-size: var(--font-size-sm);
+}
+
+/* Inline confirmation shown after a successful submission. */
+.sp-contact__form .webform-confirmation {
+  padding: var(--space-4);
+  border-left: 4px solid var(--color-accent);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+}
+
+/*
+ * Submit loader. During an Ajax submit Drupal disables the button and puts
+ * .ajax-progress-throbber right after it, then removes both when the
+ * response arrives, so these styles show and hide on their own.
+ */
+.sp-contact__form .form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sp-contact__form input[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.sp-contact__form .ajax-progress-throbber {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Replace core's small GIF with a spinner in the theme colours. */
+.sp-contact__form .ajax-progress-throbber .throbber {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  background: none;
+  animation: sp-contact-spin 0.8s linear infinite;
+}
+
+/* Core adds a .message only when one is set; otherwise show our own label. */
+.sp-contact__form .ajax-progress-throbber:not(:has(.message))::after {
+  content: "Sending…";
+}
+
+@keyframes sp-contact-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-contact__form .ajax-progress-throbber .throbber {
+    animation-duration: 2s;
+  }
+}

@@ -9,7 +9,7 @@
  *   open submenus.
  */
 ((Drupal, once) => {
-  const desktop = window.matchMedia('(min-width: 1024px)');
+  const desktop = window.matchMedia('(min-width: 1200px)');
   let submenuCount = 0;
 
   Drupal.behaviors.spSiteHeader = {

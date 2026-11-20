@@ -1,44 +1,18 @@
 /**
  * @file
- * Page layout for core's default page.html.twig (system module), which the
- * theme does not override:
+ * Page-level layout.
  *
- *   .layout-container > header (page.header)
- *                     > div (breadcrumb, highlighted and help regions)
- *                     > main > .layout-content (page.content)
- *                     > footer (page.footer)
- *
- * The site-header and site-footer SDCs render <div>s, because core already
- * wraps the regions in <header> and <footer>.
+ * Pages are rendered by the Canvas page template "Default" (site header,
+ * breadcrumbs, main content area, site footer), which bypasses
+ * page.html.twig. Each landmark comes from an SDC: site-header (<header>),
+ * main-content (<main id="main-content">), site-footer (<footer>).
  */
 
-.layout-container {
+/* Keep the footer at the bottom on short pages. */
+.dialog-off-canvas-main-canvas {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* Canvas sections are full width and set their own container, so main is
-   not width-constrained. */
-.layout-container > main {
-  flex: 1 0 auto;
-}
-
-/* Sticky header: core's <header> wrapper is the element that can stick
-   (the SDC inside it is exactly as tall as its parent). */
-.layout-container > header:has(.sp-header--sticky) {
-  position: sticky;
-  top: var(--drupal-displace-offset-top, 0px);
-  z-index: 100;
-}
-
-/* Region wrappers between header and main (status messages, page title,
-   tabs, help) get the site container. The breadcrumb SDC has its own. */
-.layout-container > div:not(:has(.sp-breadcrumb)) {
-  width: 100%;
-  max-width: calc(var(--container-max) + 2 * var(--gutter));
-  margin-inline: auto;
-  padding: var(--space-4) var(--gutter) 0;
 }
 
 /* Core skip link (html.html.twig) is visually hidden until focused; core's

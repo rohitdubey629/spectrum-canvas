@@ -21,6 +21,13 @@ props:
       description: Small label above the heading, such as the section name.
       examples:
         - Defence and aerospace
+    date:
+      type: string
+      format: date
+      title: Date
+      description: Optional publication date, shown under the heading. Used by the News content template.
+      examples:
+        - '2026-10-01'
     text:
       type: string
       title: Text

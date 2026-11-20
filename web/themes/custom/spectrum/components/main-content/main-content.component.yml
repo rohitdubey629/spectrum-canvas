@@ -1,0 +1,12 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Main content area
+status: stable
+group: 'Spectrum: Global'
+description: The page's <main> landmark and the target of the "Skip to main content" link. Use it only in Canvas page templates, with the "Page content" marker (and the status messages block) inside its slot.
+props:
+  type: object
+  properties: {}
+slots:
+  content:
+    title: Content
+    description: Put the "Page content" marker here, after the status messages block.

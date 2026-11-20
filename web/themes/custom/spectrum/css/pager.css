@@ -1,0 +1,42 @@
+/* Core pager (Views listings such as News). Loaded only when a pager renders. */
+.pager {
+  margin-top: var(--space-7);
+}
+
+.pager__items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pager__item a,
+.pager__item.is-active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.pager__item a:hover,
+.pager__item a:focus-visible {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.pager__item.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}

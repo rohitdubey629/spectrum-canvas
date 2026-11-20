@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Main content area: the <main> landmark for Canvas page templates.
+ *
+ * Canvas page templates render the whole page and bypass page.html.twig, so
+ * this component provides <main id="main-content"> for core's skip link.
+ */
+#}
+<main{{ attributes.addClass('sp-main').setAttribute('id', 'main-content').setAttribute('tabindex', '-1') }}>
+  {{ content }}
+</main>

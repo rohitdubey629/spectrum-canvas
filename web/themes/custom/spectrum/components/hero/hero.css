@@ -51,6 +51,13 @@
   text-align: center;
 }
 
+.sp-hero__date {
+  margin-top: calc(-1 * var(--space-2));
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  opacity: 0.85;
+}
+
 .sp-hero__eyebrow {
   margin-bottom: var(--space-3);
   color: var(--color-accent);
