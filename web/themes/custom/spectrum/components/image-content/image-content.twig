@@ -2,31 +2,49 @@
 /**
  * @file
  * Image and content component.
+ *
+ * "layout" chooses what is shown: both columns, the image only or the content
+ * only. When only one part is shown (or no image is set) it takes the full
+ * width. "Image only" without an image falls back to showing the content, so
+ * the section is never empty.
  */
 #}
+{% set layout = layout ?? 'both' %}
 {% set image_position = image_position ?? 'left' %}
 {% set background = background ?? 'white' %}
-<section{{ attributes.addClass('sp-image-content', 'sp-image-content--image-' ~ image_position, 'sp-bg--' ~ background) }}>
+{% set has_image = image and image.src %}
+{% set show_image = has_image and layout != 'content' %}
+{% set show_content = layout != 'image' or not has_image %}
+{% set full_width = not (show_image and show_content) %}
+{% set classes = [
+  'sp-image-content',
+  'sp-image-content--image-' ~ image_position,
+  full_width ? 'sp-image-content--full',
+  'sp-bg--' ~ background,
+]|filter(c => c) %}
+<section{{ attributes.addClass(classes) }}>
   <div class="sp-image-content__inner container">
-    {% if image and image.src %}
+    {% if show_image %}
       <div class="sp-image-content__media">
         {% include 'canvas:image' with image|merge({
           class: 'sp-image-content__image',
-          sizes: '(min-width: 768px) 50vw, 100vw',
+          sizes: full_width ? '100vw' : '(min-width: 768px) 50vw, 100vw',
         }) only %}
       </div>
     {% endif %}
-    <div class="sp-image-content__body">
-      {% if eyebrow %}
-        <p class="sp-eyebrow">{{ eyebrow }}</p>
-      {% endif %}
-      <h2 class="sp-image-content__heading">{{ heading }}</h2>
-      {% if text %}
-        <div class="sp-image-content__text">{{ text }}</div>
-      {% endif %}
-      {% if button_text and button_url %}
-        <a class="button" href="{{ button_url }}">{{ button_text }}</a>
-      {% endif %}
-    </div>
+    {% if show_content %}
+      <div class="sp-image-content__body">
+        {% if eyebrow %}
+          <p class="sp-eyebrow">{{ eyebrow }}</p>
+        {% endif %}
+        <h2 class="sp-image-content__heading">{{ heading }}</h2>
+        {% if text %}
+          <div class="sp-image-content__text">{{ text }}</div>
+        {% endif %}
+        {% if button_text and button_url %}
+          <a class="button" href="{{ button_url }}">{{ button_text }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
   </div>
 </section>

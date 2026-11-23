@@ -38,10 +38,25 @@ props:
           alt: Placeholder image
           width: 800
           height: 600
+    layout:
+      type: string
+      title: Layout
+      description: Show the image and the content side by side, or only one of them. When only one is shown it takes the full width.
+      enum:
+        - both
+        - image
+        - content
+      meta:enum:
+        both: Image and content
+        image: Image only (full width)
+        content: Content only (full width)
+      default: both
+      examples:
+        - both
     image_position:
       type: string
       title: Image position
-      description: Side of the image on tablet and desktop. On mobile the image is always on top.
+      description: Side of the image on tablet and desktop when the layout shows both. On mobile the image is always on top.
       enum:
         - left
         - right

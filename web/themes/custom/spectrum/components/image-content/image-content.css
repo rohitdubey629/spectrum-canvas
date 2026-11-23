@@ -17,6 +17,16 @@
   .sp-image-content--image-right .sp-image-content__media {
     order: 2;
   }
+
+  /* Only one part shown: it spans the full width. */
+  .sp-image-content--full .sp-image-content__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Full-width image: wider crop so it doesn't get too tall. */
+.sp-image-content--full .sp-image-content__image {
+  aspect-ratio: 16 / 9;
 }
 
 .sp-image-content__image {
