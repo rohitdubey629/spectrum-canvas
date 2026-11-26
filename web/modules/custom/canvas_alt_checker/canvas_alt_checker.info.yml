@@ -1,0 +1,7 @@
+name: Canvas Alt Checker
+type: module
+description: 'Canvas extension that flags images with missing, empty or unhelpful alt text in the page being edited.'
+package: Canvas
+core_version_requirement: ^11.3
+dependencies:
+  - canvas:canvas

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Alt Checker</title>
+    <link rel="stylesheet" href="css/alt-checker.css?v=3" />
+  </head>
+  <body>
+    <header class="ac-header">
+      <h1>Image alt text</h1>
+      <p id="ac-summary" class="ac-summary" role="status" aria-live="polite">Checking the page…</p>
+      <div class="ac-filters" role="group" aria-label="Filter images">
+        <button type="button" class="ac-filter" data-filter="all" aria-pressed="true">All <span data-count="all">0</span></button>
+        <button type="button" class="ac-filter" data-filter="missing" aria-pressed="false">Alt missing <span data-count="missing">0</span></button>
+        <button type="button" class="ac-filter" data-filter="present" aria-pressed="false">Alt present <span data-count="present">0</span></button>
+      </div>
+    </header>
+    <ul id="ac-list" class="ac-list"></ul>
+    <script src="js/alt-checker.js?v=3"></script>
+  </body>
+</html>
