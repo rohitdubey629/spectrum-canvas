@@ -1,0 +1,23 @@
+canvas_alt_checker.lookup:
+  path: '/canvas-alt-checker/lookup'
+  defaults:
+    _controller: '\Drupal\canvas_alt_checker\Controller\AltTextController::lookup'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'
+    _user_is_logged_in: 'TRUE'
+    _csrf_request_header_token: 'TRUE'
+  options:
+    no_cache: TRUE
+
+canvas_alt_checker.save:
+  path: '/canvas-alt-checker/save'
+  defaults:
+    _controller: '\Drupal\canvas_alt_checker\Controller\AltTextController::save'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'
+    _user_is_logged_in: 'TRUE'
+    _csrf_request_header_token: 'TRUE'
+  options:
+    no_cache: TRUE

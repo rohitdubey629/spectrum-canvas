@@ -1,0 +1,9 @@
+# The extension's HTML, JS and CSS change during development. Drupal's root
+# .htaccess caches static files for a year, which would keep the Canvas iframe
+# on stale code. Make browsers revalidate (cheap 304s via ETag) instead.
+<IfModule mod_expires.c>
+  ExpiresActive Off
+</IfModule>
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-cache"
+</IfModule>

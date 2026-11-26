@@ -1,0 +1,9 @@
+canvas_alt_checker:
+  name: Image Alt Checker
+  description: Lists images in this page whose alt text is missing, empty or unhelpful.
+  url: extension.html
+  icon: icon.svg
+  type: canvas
+  api_version: "1.0"
+  permissions:
+    - access content
